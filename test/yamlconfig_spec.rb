@@ -2,7 +2,7 @@ require "base"
 require "yaml_config"
 
 describe "YAMLConfig" do
-  before(:each) do
+  before(:all) do
     cd File.expand_path(File.dirname(__FILE__))+"/testdata"
   end
 
