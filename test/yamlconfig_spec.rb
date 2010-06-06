@@ -1,14 +1,15 @@
-require "spec"
-require "../lib/yaml_config"
-require 'rake'
+require "base"
+require "yaml_config"
 
 def propsnew
-  BW::YAMLConfig.new.props
+  config = BW::YAMLConfig.new "local_properties_default.yml", "local_properties.yml"
+  config.props
 end
 
-describe "Properties" do
+describe "YAMLConfig" do
   before(:each) do
     @current = pwd
+    cd File.expand_path(File.dirname(__FILE__))
   end
 
   after(:each) do
@@ -17,7 +18,7 @@ describe "Properties" do
   end
 
   it "Should work OK with only default properties" do
-    cd "properties/onlydefault"
+    cd "onlydefault"
     @removegen = true
     props = propsnew
     props['area1']['setting'].should == "yep"
@@ -26,7 +27,7 @@ describe "Properties" do
   end
 
   it "Should work OK with default + partially filled out user properties" do
-    cd "properties/defaultpartialuser"
+    cd "defaultpartialuser"
     props = propsnew
     props['area1']['setting'].should == "overrodethis"
     props['area1']['setting2'].should == "nope"
@@ -34,7 +35,7 @@ describe "Properties" do
   end
 
   it "Should work OK with default + completely filled out user properties" do
-    cd "properties/defaultanduser"
+    cd "defaultanduser"
     props = propsnew
     props['area1']['setting'].should == "yep2"
     props['area1']['setting2'].should == "nope2"

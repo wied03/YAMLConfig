@@ -1,9 +1,16 @@
 require 'rake'
 require 'rubygems'
 require 'rake/gempackagetask'
+require 'spec/rake/spectask'
+
+Spec::Rake::SpecTask.new(:spec) do |t|
+  t.spec_files = FileList['test/**/*_spec.rb']
+  t.spec_opts << '--format specdoc'
+  t.libs = FileList['test']
+end
 
 spec = Gem::Specification.new do |s|
-  s.name = 'yamlmerge'
+  s.name = 'yamlconfig'
   s.version = '1.0.0'
   s.summary = "Safely reads and merges 2 YAML configuration files"
   s.description = s.summary

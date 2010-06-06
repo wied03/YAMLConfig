@@ -2,11 +2,10 @@ module BW
   class YAMLConfig
     attr_accessor :props
 
-    def initialize
-        default_props = YAML::load(File.read('local_properties_default.yml'))
-        prop = 'local_properties.yml'
-        FileUtils.touch prop unless File.exists? prop
-        user_props = YAML::load(File.read(prop))
+    def initialize defaultfile, userfile
+        default_props = YAML::load(File.read(defaultfile))
+        FileUtils.touch userfile unless File.exists? userfile
+        user_props = YAML::load(File.read(userfile))
         @props = merge user_props, default_props
     end
 
