@@ -1,1 +1,14 @@
 This is a YAML configuration utility class.
+
+Invoke it like this:
+
+props = BW::YAMLConfig.new("onlydefault.yml",
+                           "newuserfile.yml").props
+
+                               OR
+
+props = BW::YAMLConfig.new.props will use the default values local_properties.yml and
+local_properties_default.yml
+
+This can be useful for parameters specific to a rake build that you want users to be
+able to change and thus not versioned
