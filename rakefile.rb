@@ -10,7 +10,7 @@ Spec::Rake::SpecTask.new(:spec) do |t|
 end
 
 spec = Gem::Specification.new do |s|
-  s.name = 'yamlconfig'
+  s.name = 'bwyamlconfig'
   s.version = '1.0.0'
   s.summary = "Safely reads and merges 2 YAML configuration files"
   s.description = s.summary
