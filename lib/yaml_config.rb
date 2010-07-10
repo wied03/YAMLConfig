@@ -1,3 +1,5 @@
+require "yaml"
+
 module BW
   class YAMLConfig
     attr_accessor :props
