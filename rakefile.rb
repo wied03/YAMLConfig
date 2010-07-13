@@ -14,6 +14,8 @@ with("spec") do |testdir|
     t.libs = FileList[testdir]
   end
 
+  task :ci => [:spec, :clean_install]  
+
   task :clean_install => [:repackage, :install]
 
   with("bwyamlconfig") do |gemname|
