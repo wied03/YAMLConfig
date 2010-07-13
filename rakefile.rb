@@ -2,7 +2,6 @@ require 'rake'
 require 'rubygems'
 require 'rake/gempackagetask'
 require 'spec/rake/spectask'
-require 'ci/reporter/rake/rspec'
 
 def with(value)
   yield(value)
