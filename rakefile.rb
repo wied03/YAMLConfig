@@ -1,17 +1,15 @@
 require 'rake'
 require 'rubygems'
 require 'rake/gempackagetask'
-require 'spec/rake/spectask'
+require 'rspec/core/rake_task'
 
 def with(value)
   yield(value)
 end
 
 with("spec") do |testdir|
-  Spec::Rake::SpecTask.new(:spec) do |t|
-    t.spec_files = FileList["#{testdir}/**/*_spec.rb"]
-    t.spec_opts << '--format specdoc'
-    t.libs = FileList[testdir]
+  RSpec::Core::RakeTask.new(:spec) do |t|
+    t.pattern = FileList["#{testdir}/**/*_spec.rb"]
   end
 
   task :ci => [:spec, :clean_install]  
