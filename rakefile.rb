@@ -1,6 +1,6 @@
 require 'rake'
 require 'rubygems'
-require 'rake/gempackagetask'
+require 'rubygems/package_task'
 require 'rspec/core/rake_task'
 
 def with(value)
@@ -36,7 +36,7 @@ with("spec") do |testdir|
         s.email = "brady@wied.us"
       end
 
-      Rake::GemPackageTask.new(spec) do |pkg|
+      Gem::PackageTask.new(spec) do |pkg|
       end
     end
   end
