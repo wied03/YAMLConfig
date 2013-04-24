@@ -3,11 +3,11 @@ require "yaml_config"
 
 describe "YAMLConfig" do
   before(:all) do
-    cd File.expand_path(File.dirname(__FILE__))+"/testdata"
+    Dir.chdir File.expand_path(File.dirname(__FILE__))+"/testdata"
   end
 
   after(:each) do
-    rm "newuserfile.yml" if File.exist? "newuserfile.yml"
+    File.delete "newuserfile.yml" if File.exist? "newuserfile.yml"
   end
 
   it "Should work OK with only default properties" do
