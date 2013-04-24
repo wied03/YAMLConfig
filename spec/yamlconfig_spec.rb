@@ -10,7 +10,7 @@ describe "YAMLConfig" do
     File.delete "newuserfile.yml" if File.exist? "newuserfile.yml"
   end
 
-  it "Should work OK with only default properties" do
+  it "Should work fine with only default properties" do
     props = BW::YAMLConfig.new("onlydefault.yml",
                                "newuserfile.yml").props
 
